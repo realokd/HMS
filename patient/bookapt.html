@@ -1,0 +1,143 @@
+<div
+class="container d-flex p-4 h-75 bg-light order border border-dark position-relative top-50 left-50"
+ng-show="show"
+style="
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: auto;
+"
+>
+<div
+  ng-click="overlayfunc()"
+  class="text-danger"
+  style="align-self: flex-end"
+>
+  ClOSE
+</div>
+<h3>Book An Appointment</h3>
+<form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >Patient's Name</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label"
+      >Patent's Contact Number</label
+    >
+    <input
+      type="number"
+      class="form-control"
+      id="exampleInputPassword1"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >Which specialist would you want to visit?</label
+    >
+    <select
+      class="form-select w-100 p-1 border-1"
+      style="border-style: solid; background-color: #fff; height: 20%"
+      aria-label="Default select example"
+      ng-model="speciality"
+      ng-options="key as value for (key , value) in spec"
+    >
+      <option value="" selected disabled>
+        Select Doctor's Speciality
+      </option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >Select the ENT Specialist you want to visit</label
+    >
+    <select
+      class="form-select w-100 p-1 border-1"
+      style="border-style: solid; background-color: #fff"
+      aria-label="Default select example"
+      ng-model="speciality"
+      ng-options="key as value for (key , value) in spec"
+    >
+      <option value="" selected disabled>Select the Doctor</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >Which specialist would you want to visit?</label
+    >
+    <select
+      class="form-select w-100 p-1 border-1"
+      style="border-style: solid; background-color: #fff"
+      aria-label="Default select example"
+      ng-model="speciality"
+      ng-options="key as value for (key , value) in spec"
+    >
+      <option value="" selected disabled>Available Time Slots</option>
+    </select>
+  </div>
+  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+</form>
+<div
+  ng-click="changeshow()"
+  class="text-success"
+  style="align-self: flex-end"
+>
+  NEXT
+</div>
+</div>
+<div
+class="container d-flex p-5 bg-light order border border-dark position-relative top-50 left-50"
+ng-hide="show"
+style="
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+"
+>
+<div class="heading"><h3>Summary</h3></div>
+<table class="table">
+
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Patient's Name</td>
+      <td>Om</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Patient's Email</td>
+      <td>Om@gmail.com</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td scope="row"">Visiting to Doctor</td>
+      <td>Kamal Nath</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td scope="row"">Appintment Time</td>
+      <td>12:30 pm</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td scope="row"">Fees</td>
+      <td>1000</td>
+    </tr>
+  </tbody>
+</table>
+<div class="my-4">
+  <button ng-click = paybtn() class="btn btn-primary">Confirm and Pay</button>
+</div>
+</div>

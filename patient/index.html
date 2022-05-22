@@ -1,0 +1,193 @@
+<div
+  ng-controller="accountCtrl"
+  class="container-fluid d-flex align-items-center justify-content-around"
+  style="width: 100vw; height:92vh; background-image: url(images/blurry-gradient-haikei.svg);background-repeat: no-repeat; background-size: cover;"
+>
+  <div
+    class="container w-50 d-flex align-items-end align-content-end"
+    style ="height: 92vh"
+  >
+    <img
+      src="images/kisspng-physician-uniform-scrubs-lab-coats-health-care-innova-eg-consultores-5b6f3cc2dfbdd0.5482642315340167069165.png"
+      alt=""
+      height="90%"
+    />
+  </div>
+  <div class="card w-50 min-h-75" ng-hide = hidef>
+    <div class="card-body d-flex justify-content-center align-items-center">
+      <form
+        class="d-flex justify-content-center align-items-center flex-column w-100"
+      >
+        <img
+          style="width: 15%"
+          src="https://openclipart.org/image/800px/304174"
+          alt=""
+        />
+        <h1 class="mt-3 mb-3">Patient Login</h1>
+        <div class="d-flex flex-column justify-content-center w-75">
+          <label for="aadhar">Aadhar Card</label>
+          <input
+            type="text"
+            class="form-control"
+            id="aadhar"
+            placeholder="Enter your registered Aadhar Number"
+            ng-model = "aadharnum"
+          />
+        </div>
+        <div class="d-flex flex-column justify-content-center w-75 mt-3">
+          <label for="passw">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="passw"
+            placeholder="Enter your Password"
+            ng-model = "password"
+
+          />
+        </div>
+        <div class="d-flex flex-column justify-content-center w-75 mt-3">
+          <button type="submit" ng-click = "login()" class="btn btn-primary mt-3 mb-3">LOGIN</button>
+        </div>
+        <a href="" ng-click = func()>Dont't have an account? Register now</a>
+      </form>
+    </div>
+  </div>
+  
+  <div
+    ng-show = hidef
+    class="container h-75 w-50"
+    style="
+      position: relative;
+      top: 3rem;
+      right: 7rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    "
+  >
+    <h1 class="my-4" style="font-family: Poppins">Registration form</h1>
+    <div class="row" style="width: 45rem; height: 5rem">
+      <div class="col">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter First Name"
+            ng-model = "fname"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter Your Phone Number"
+            ng-model = "phno"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Enter Date of Birth"
+            ng-model="dob"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Enter Password"
+            ng-model="pass"
+          />
+        </div>
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            placeholder="Enter Address"
+            ng-model = "add"
+          ></textarea>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M" ng-model = "gender">
+          <label class="form-check-label" for="inlineRadio1">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="F" ng-model = "gender">
+          <label class="form-check-label" for="inlineRadio2">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="O" ng-model = "gender">
+          <label class="form-check-label" for="inlineRadio2">Other</label>
+        </div>
+        <div class="form-group my-4">
+          <button class="btn btn-primary" ng-click = "submit()">Submit</button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter Your Last Name"
+            ng-model = "lname"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter Your Email Address"
+            ng-model = "email"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Enter Aadhar"
+            ng-model="aadno"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Confirm Password"
+            ng-model = "cpass"
+          />
+        </div>
+
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            placeholder="Enter Medical History"
+            ng-model = "mhistory"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <a href="" ng-click = func()>Already have an account? Log in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>

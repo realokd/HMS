@@ -1,0 +1,168 @@
+<div class="container-fluid" style="height: 100vh">
+  <div id="overlay" class="m-auto">
+    <div ui-view></div>
+  </div>
+  <div class="row m-4 d-flex justify-content-around" style="height: 85vh">
+    <div
+      class="col-sm-2 btn bg-primary border border-primary px-0"
+      style="display: flex; flex-direction: column"
+    >
+      <!-- <div class="bg-info w-100 my-1 text-light">Home</div> -->
+
+      <button class="btn btn-primary w-100" style="height: 5rem">Home</button>
+      <button
+        class="btn btn-primary w-100"
+        style="height: 5rem"
+        ng-click="overlayfunc()"
+        ui-sref="bookapt()"
+      >
+        Book Appointment
+      </button>
+      <button
+        class="btn btn-primary w-100"
+        style="height: 5rem"
+        ng-click="overlayfunc()"
+        ui-sref="presc()"
+      >
+        Prescription
+      </button>
+      <button
+        class="btn btn-primary w-100"
+        style="height: 5rem"
+        ui-sref="account()"
+      >
+        Logout
+      </button>
+    </div>
+    <div class="col-sm-6 border border-primary">
+      <div
+        class="container border border-primary my-3 d-flex justify-content-around align-items-center"
+        style="height: 45%"
+      >
+        <div class="row row-cols-1 row-cols-md-3 g-4 h-75">
+          <div class="col-sm-4">
+            <div class="card h-100">
+              <div
+                class="card-body"
+                style="
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+                "
+              >
+                <img class="avatar" src="http://placeimg.com/80/80/people" />
+                <h5 class="card-title">{{pdata.success}}</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="card" style="height: 100%">
+              <div class="card-body">
+                <p
+                  class="card-text"
+                  style="
+                    display: grid;
+                    grid-template-columns: 33% 33% 33%;
+                    grid-template-rows: 60% 20%;
+                  "
+                >
+                  <span class="my-2 mx-3">
+                    <strong>Gender</strong> <br />
+                    Male</span
+                  >
+                  <span class="my-2 mx-3">
+                    <strong>Phone</strong> <br />
+                    987546987</span
+                  >
+                  <span class="my-2 mx-3">
+                    <strong>Email</strong> <br />
+                    Om@gmail.com</span
+                  >
+                  <span class="my-2 mx-3">
+                    <strong>Address</strong> <br />
+                    44 krishna colony <br />
+                    jeoni mandi agra</span
+                  >
+                  <span class="my-2 mx-3">
+                    <strong>Birthday</strong> <br />
+                    06-04-2003</span
+                  >
+                  <span class="my-2 mx-3">
+                    <strong>Registered Date</strong> <br />
+                    25-07-2018</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container border border-primary my-3"
+        style="height: 48%; overflow: scroll"
+      >
+        <div class="card my-3">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card my-3">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card my-3">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 border border-primary p-0">
+      <div
+        class="container w-100"
+        style="
+          height: 8%;
+          border: solid blue 2px;
+          margin-bottom: 5%;
+          text-align: center;
+        "
+      >
+        <h3 class="my-3">Notifications</h3>
+      </div>
+      <div
+        class="container w-100 d-flex"
+        style="height: 10%; border: solid blue 2px; flex-direction: column"
+      >
+        <h5 class="m-auto m-0">Title</h5>
+        <span
+          class="m-0"
+          style="text-align: left; font-size: 0.9rem; line-height: 1rem"
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. At,
+          explicabo.</span
+        >
+        <span style="font-size: 0.7rem; margin-left: auto">12:45 pm</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+
     <style>
       .btn-change8 {
         background: #fff;
@@ -48,6 +49,9 @@
         position: absolute;
         left: 7rem;
       }
+      .none{
+        display: none;
+      }
       .hbtn{
         width: 12rem;
         height: 2.4rem;
@@ -60,10 +64,31 @@
         box-shadow: 12rem 0 0 #000000 inset;
         color: white;
       }
+      .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 40px; /* половина ширины и высоты */
+        margin: 10px;
+}
+      #overlay {
+        position: fixed; /* Sit on top of the page content */
+        display: none; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+        z-index: 99; /* Specify a stack order in case you're using a different order for other elements */
+        cursor: pointer;
+        justify-content: center;
+        align-items: center; /* Add a pointer on hover */
+}
     </style>
   </head>
   <body ng-app = "myApp">
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand" href="#">Navbar</a>
       <button
         class="navbar-toggler"
@@ -84,24 +109,27 @@
             >
           </li>
           <li class="nav-item mx-1">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link active" ui-sref="account()">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link active" ui-sref="docreg()">Doctor</a>
           </li>
-          <li class="nav-item dropdown mx-1">
+          <li class="nav-item">
+            <a class="nav-link active" ui-sref="pdashb()">Dashboard</a>
+          </li>
+          <li class="nav-item font-family: Poppins; dropdown mx-1">
             <a
-              class="nav-link dropdown-toggle"
-              href="#"
+              class="nav-link dropdown-toggle active" 
+              
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >
+            > 
               Dropdown link
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" ui-sref="pdashb()">p_dashboard</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
@@ -117,15 +145,17 @@
         </ul>
       </div>
     </nav>
-
-    <div ui-view>
+    <!-- <div ui-view>
       
-    </div>
-    
+    </div> -->
+    <ui-view>
+
+    </ui-view>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.30/angular-ui-router.min.js" integrity="sha512-HdDqpFK+5KwK5gZTuViiNt6aw/dBc3d0pUArax73z0fYN8UXiSozGNTo3MFx4pwbBPldf5gaMUq/EqposBQyWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="index.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

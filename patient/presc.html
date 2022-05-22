@@ -1,0 +1,78 @@
+<!-- <div
+  ng-controller="prescCtrl"
+  class="container d-flex p-4 h-75 bg-light order border border-dark h-100 w-100"
+  style="
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: auto;
+    height: 10rem;
+    width: 10rem;
+  "
+>
+  <div
+    ng-click="overlayfunc()"
+    class="text-danger"
+    style="align-self: flex-end"
+  >
+    ClOSE
+  </div>
+  <h3>Your Prescription</h3>
+  <div>this is text</div>
+  <div
+    ng-click="changeshow()"
+    class="text-success"
+    style="align-self: flex-end"
+  >
+    NEXT
+  </div>
+</div> -->
+<div
+  class="container d-flex p-5 h-75 bg-light order border border-dark position-relative top-50 left-50"
+  
+  style="
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: auto;
+  "
+>
+  <div
+    ng-click="overlayfunc()"
+    class="text-danger"
+    style="align-self: flex-end; margin-top:-2.8rem; margin-right: -2.5rem;"
+  >
+    X
+  </div>
+  <h3>Prescription</h3>
+  <div class="b">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">
+            <ul class="list-group">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+                <li class="list-group-item">And a fifth one</li>
+              </ul>
+        </p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+  <div
+    ng-click="changeshow()"
+    class="text-success"
+    style="align-self: flex-end"
+  >
+    NEXT
+  </div>
+</div>
