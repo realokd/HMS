@@ -1,0 +1,115 @@
+<div
+  id="book"
+  class="container w-100 d-flex p-4 h-100 text-light order"
+  style="
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #2a1f47;
+  "
+>
+  <div
+    ng-click="overlayfunc()"
+    class="text-danger"
+    style="align-self: flex-end"
+  >
+    ClOSE
+  </div>
+  <div class="d-flex" style="justify-content: flex-start">
+    <div
+      class="text-light"
+      style="align-self: flex-end; opacity: 0.7"
+      ng-click="about()"
+    >
+      About &nbsp &nbsp |
+    </div>
+    <div
+      class="text-light"
+      style="align-self: flex-end; opacity: 0.7"
+      ng-click="book()"
+    >
+      &nbsp &nbsp Book Appointment
+    </div>
+  </div>
+  <h3 ng-hide="show">Patient's Details</h3>
+  <h3 ng-show="show">Book An Appointment</h3>
+  <div ng-show="show">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"
+        >Enter appointment date and time</label
+      >
+      <input type="datetime-local" ng-model="datetimee" class="form-control" />
+    </div>
+    <button
+      class="btn btn-success"
+      ng-click="bookap() ; overlayfunc() ; dashhitd()"
+    >
+      Book
+    </button>
+  </div>
+  <form style="overflow: auto" class="w-75 h-75" ng-hide="show">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Patient's Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        disabled
+        value="{{p_name}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label"
+        >Patent's Contact Number</label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputPassword1"
+        disabled
+        value="{{p_phone}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"
+        >All previous appointments with you</label
+      >
+      <select
+        class="form-select w-100 p-1 border-1"
+        style="border-style: solid; background-color: #fff"
+        aria-label="Default select example"
+      >
+        <option selected disabled selected disabled>
+          previous appointments
+        </option>
+        <option ng-repeat="apt in allapts">{{apt.date_time}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">{{p_name}}'s Medical History</label>
+      <textarea type="text" rows="3" class="form-control" disabled>
+{{med_history}}</textarea
+      >
+    </div>
+
+    <!-- <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >Which specialist would you want to visit?</label
+    >
+    <select
+      class="form-select w-100 p-1 border-1"
+      style="border-style: solid; background-color: #fff"
+      aria-label="Default select example"
+      ng-model="speciality"
+      ng-options="key as value for (key , value) in spec"
+      ng-change='dynamicdd()'
+    >
+      <option value="" selected disabled>Available Time Slots</option>
+    </select>
+  </div> -->
+    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+  </form>
+</div>

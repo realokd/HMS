@@ -1,47 +1,70 @@
-<div class="container-fluid" style="height: 100vh">
+<div class="" style="height: 100%; width: 100% ; background-color: #30284e;">
   <div id="overlay" class="m-auto">
     <div ui-view></div>
   </div>
-  <div class="row m-4 d-flex justify-content-around" style="height: 85vh">
-    <div
-      class="col-sm-2 btn bg-primary border border-primary px-0"
-      style="display: flex; flex-direction: column"
-    >
-      <!-- <div class="bg-info w-100 my-1 text-light">Home</div> -->
+  <div
+    class="col-sm-2 btn bg-primary px-0 float-left"
+    style="
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: fixed;
+    "
+  >
+    <!-- <div class="bg-info w-100 my-1 text-light">Home</div> -->
 
-      <button class="btn btn-primary w-100" style="height: 5rem">Home</button>
-      <button
-        class="btn btn-primary w-100"
-        style="height: 5rem"
-        ng-click="overlayfunc()"
-        ui-sref="bookapt()"
-      >
-        Book Appointment
-      </button>
-      <button
-        class="btn btn-primary w-100"
-        style="height: 5rem"
-        ng-click="overlayfunc()"
-        ui-sref="presc()"
-      >
-        Prescription
-      </button>
-      <button
-        class="btn btn-primary w-100"
-        style="height: 5rem"
-        ui-sref="account()"
-      >
-        Logout
-      </button>
-    </div>
-    <div class="col-sm-6 border border-primary">
+    <button class="btn btn-primary w-100" style="height: 5rem">Home</button>
+    <button
+      class="btn btn-primary w-100"
+      style="height: 5rem"
+      ng-click="overlayfunc()"
+      ui-sref="bookapt()"
+    >
+      Book Appointment
+    </button>
+    <button
+      class="btn btn-primary w-100"
+      ng-click="presbtn()"
+      style="height: 5rem"
+      data-bs-toggle="modal" 
+      data-bs-target="#staticBackdrop"
+    >
+      Appointment History
+    </button>
+    <button
+    class="btn btn-primary w-100"
+    ng-click="notify()"
+    style="height: 5rem"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasRight"
+  >
+    Notifications
+  </button>
+    <button
+      class="btn btn-primary w-100"
+      style="height: 5rem"
+      ng-click="logout()"
+    >
+      Logout
+    </button>
+  </div>
+  <div
+    class="row d-flex"
+    style="
+      height: 100%;
+      margin-left: 10rem;
+      width: calc(100% - 10rem);
+      justify-content: center;
+    "
+  >
+    <div class="col-sm-6 my-4">
       <div
-        class="container border border-primary my-3 d-flex justify-content-around align-items-center"
-        style="height: 45%"
+        class="container my-5 w-100 d-flex justify-content-around align-items-center"
+        style="min-height: 45%;"
       >
-        <div class="row row-cols-1 row-cols-md-3 g-4 h-75">
-          <div class="col-sm-4">
-            <div class="card h-100">
+        <div class="row row-cols-1 row-cols-md-3 g-4 min-h-75">
+          <!-- <div class="col-sm-4">
+            <div class="card h-100 text-light" style="background-color: #3d3067;">
               <div
                 class="card-body"
                 style="
@@ -51,99 +74,59 @@
                 "
               >
                 <img class="avatar" src="http://placeimg.com/80/80/people" />
-                <h5 class="card-title">{{pdata.success}}</h5>
+                <h5 class="card-title">{{d.fname}} {{d.lname}}</h5>
                 <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                   {{age}}
                 </p>
               </div>
             </div>
-          </div>
-          <div class="col-sm-8">
-            <div class="card" style="height: 100%">
+          </div> -->
+          <div class="col-sm-12">
+            <div class="card text-light" style="height: 100% ; background-color: #3d3067;">
               <div class="card-body">
+                <div
+                class="card-body"
+                style="
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+                "
+              >
+                <img class="avatar" src="http://placeimg.com/80/80/people" />
+                <h5 class="card-title">{{d.fname}} {{d.lname}}</h5>
+                <p class="card-text">
+                   <!-- {{age}} -->
+                </p>
+              </div>
                 <p
                   class="card-text"
-                  style="
-                    display: grid;
-                    grid-template-columns: 33% 33% 33%;
-                    grid-template-rows: 60% 20%;
-                  "
+                  style="display: grid; grid-template-columns: 30% 70%"
                 >
-                  <span class="my-2 mx-3">
-                    <strong>Gender</strong> <br />
-                    Male</span
-                  >
-                  <span class="my-2 mx-3">
-                    <strong>Phone</strong> <br />
-                    987546987</span
-                  >
-                  <span class="my-2 mx-3">
-                    <strong>Email</strong> <br />
-                    Om@gmail.com</span
-                  >
-                  <span class="my-2 mx-3">
-                    <strong>Address</strong> <br />
-                    44 krishna colony <br />
-                    jeoni mandi agra</span
-                  >
-                  <span class="my-2 mx-3">
-                    <strong>Birthday</strong> <br />
-                    06-04-2003</span
-                  >
-                  <span class="my-2 mx-3">
-                    <strong>Registered Date</strong> <br />
-                    25-07-2018</span
-                  >
+                  <span class="my-3"><strong>Gender</strong></span>
+                  <span class="my-3">{{d.gender}}</span>
+                  <span class="my-3"><strong>Phone Number</strong></span>
+                  <span class="my-3">{{d.phone}}</span>
+                  <span class="my-3"><strong>Email</strong></span>
+                  <span class="my-3">{{d.email}}</span>
+                  <span class="my-3"><strong>Address</strong></span>
+                  <span class="my-3">{{d.address}}</span>
+                  <span class="my-3"><strong>Birthday</strong></span>
+                  <span class="my-3">{{d.dob}}</span>
+                  <span class="my-3"><strong>Registered Date</strong></span>
+                  <span class="my-3">{{d.registered_date}}</span>
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="container border border-primary my-3"
-        style="height: 48%; overflow: scroll"
-      >
-        <div class="card my-3">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card my-3">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card my-3">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-3 border border-primary p-0">
-      <div
+    <div class="col-sm-4 p-0 mt-5 style="overflow: scroll ;">
+      <!-- <div
         class="container w-100"
         style="
           height: 8%;
-          border: solid blue 2px;
+
           margin-bottom: 5%;
           text-align: center;
         "
@@ -152,7 +135,7 @@
       </div>
       <div
         class="container w-100 d-flex"
-        style="height: 10%; border: solid blue 2px; flex-direction: column"
+        style="height: 10%; flex-direction: column"
       >
         <h5 class="m-auto m-0">Title</h5>
         <span
@@ -162,7 +145,149 @@
           explicabo.</span
         >
         <span style="font-size: 0.7rem; margin-left: auto">12:45 pm</span>
+      </div> -->
+      <h5 class="mx-5 text-light">Appointments</h5>
+      <div class="container h-100" style="overflow: scroll ; max-height: 90vh; background-color: #2a1f47;">
+        <div class="card my-3 text-light" ng-repeat="apts in aptDetails" style="background-color: #3d3067;">
+          <div class="card-body">
+            <div style="float: right">
+              <span class="text-danger">{{apts.status}}</span>
+            </div>
+            <h5 class="card-title">{{apts.doc_name}} ({{apts.doc_spec}})</h5>
+            <p class="card-text">
+              Your Appointment is Scheduled at {{apts.appointment}} <br />
+              Bring Your Medical Records and Adhaar Card <br />
+              IF missed, a new Appointment has to be Scheduled
+            </p>
+            <a class="btn btn-warning text-dark" ng-click="delapt(apts.app_id)"
+              >Cancel Appointment</a
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade modal-dialog-scrollable" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="overflow: scroll; height: 80vh;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- { app_id: 21, doc_name: "Dr. Pranjal Maurya ", doc_spec: "Dental", … }
+​​​
+app_id: 21
+​​​
+datetime: "Tue Jun 07 2022, 07:06:00 PM"
+​​​
+doc_name: "Dr. Pranjal Maurya "
+​​​
+doc_spec: "Dental" -->
+      <div class="modal-body">
+        <div class="card" ng-repeat="p in past_a">
+          <!-- <div class="card-header">
+          </div> -->
+          <div class="card-body">
+            <h5 class="card-title">{{p.doc_name}}<span class="badge bg-secondary">{{p.doc_spec}}</span>
+            </h5>
+            <p class="card-text">{{p.datetime}}</p>
+            <a  class="btn btn-primary text-light"  data-bs-toggle="modal"
+            data-bs-target="#prescription"
+            ng-click="viewpresbtn(p.app_id)" >View Prescription</a>
+          </div>
+        </div>
+        <!-- <div
+        class="container w-100 d-flex flex-row align-items-center"
+        style="
+          background-color: #3d3067;
+          justify-content: space-between;
+          margin-bottom: 0.1rem;
+        "
+        ng-repeat="p in past_a"
+      >
+        <img class="avatar" src="http://placeimg.com/80/80/people" />
+        <div class="text-light">
+          <span>{{p.doc_name}}</span>
+          <br />
+          <span style="color: #9b9daf">{{p.datetime}}</span>
+        </div>
+        <div class="btns">
+          <button class="btn btn-danger my-1" ng-click="approve(p.app_id,false)"">
+            Reject
+          </button>
+          <button class="btn btn-success my-1" ng-click="approve(p.app_id , true)"">
+            Approve
+          </button>
+        </div>
+      </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" id="prescription">
+  <div class="modal-dialog" style="width: 70%; height: 90%">
+    <div class="modal-content" style="width: 100%; height: 100%">
+      <div class="modal-header">
+        <h5 class="modal-title">Prescription</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="100%" id="prescpage"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="printpresc()">
+          Print
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Notifications</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- <div
+        class="container w-100 d-flex my-5"
+        style="height: 10%; flex-direction: column"
+        ng-repeat = "n in notis"
+      >
+        
+        <span
+          class="m-0"
+          style="text-align: left; font-size: 0.9rem; line-height: 1rem"
+          >{{n.message}}</span
+        >
+        <span class="mt-1" style="font-size: 0.7rem; margin-left: auto">{{n.noti_time}}</span>
+      </div> -->
+  
+      <div class="card" ng-repeat="n in notis">
+        <div class="">
+          <span class="material-symbols-outlined" style="float:right; cursor: pointer;" ng-click="delnot(n.noti_id)">
+            close
+            </span>
+        </div>
+        <div class="card-body">
+
+          <p class="card-text">{{n.message}}</p>
+          <span>{{n.noti_time}}</span>
+         
+        </div>
+      </div>    </div>
 </div>

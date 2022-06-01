@@ -1,0 +1,35 @@
+<div
+  class="container w-50 d-flex p-4 h-50 text-light order border border-dark p-0"
+  style="
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: hidden;
+    background-color: #2a1f47;
+  "
+>
+  <div
+    ng-click="overlayfunc()"
+    class="text-danger"
+    style="align-self: flex-end"
+  >
+    ClOSE
+  </div>
+  <h3>Enter New Date and Time</h3>
+  <div class="li w-100">
+    <div class="mb-3">
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="exampleInputPassword1"
+        value="{{scapts.app_datetime}}"
+        ng-model="resch_date"
+      />
+    </div>
+    <button class="btn btn-success" style="float: right" ng-click="reschapt()">
+      Reschedule
+    </button>
+  </div>
+</div>

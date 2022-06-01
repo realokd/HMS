@@ -1,0 +1,203 @@
+<div
+  style="
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #30284e;
+    align-items: center;
+    font-family: poppins;
+    background-color: #30284e;
+  "
+>
+  <div id="overlay" class="m-auto">
+    <div class="w-75 h-75 popup" ui-view></div>
+  </div>
+  <div
+    class="bg-primary d-flex flex-column justify-content-between align-items-center px-auto"
+    style="width: 5%; border-radius: 20px; height: 96%"
+  >
+    <div></div>
+    <div class="d-flex flex-column align-items-center">
+      <span
+        class="material-icons text-light mb-4"
+        style="font-size: 40px; cursor: pointer"
+      >
+        home
+      </span>
+      <span
+        class="material-icons text-light mb-4"
+        style="font-size: 40px; cursor: pointer"
+        ng-click="prevbtn()"
+        ui-sref="prev"
+      >
+        history
+      </span>
+    </div>
+    <span
+      class="material-icons text-light mb-4"
+      style="font-size: 40px; cursor: pointer"
+      ng-click="logout()"
+    >
+      logout
+    </span>
+  </div>
+  <div
+    class="d-flex h-100 flex-column p-4"
+    style="width: 69%; justify-content: flex-start; align-items: center"
+  >
+    <div
+      id="header"
+      class="w-100 d-flex"
+      style="height: 10%; line-height: 0.4rem; justify-content: space-between"
+    >
+      <div>
+        <h2 style="color: white"><strong>Dashboard</strong></h2>
+        <br />
+        <span style="color: rgba(255, 255, 255, 0.7)"
+          >Wednesday, 12 April 2022</span
+        >
+      </div>
+      <div
+        id="tab"
+        class="h-100 d-flex flex-column justify-content-center align-items-center"
+        style="width: 5%; border-radius: 20px; background-color: #3d3067"
+        ng-click="pendingbtn();"
+        ui-sref="pending"
+      >
+        <span
+          class="material-icons bg-primary text-light p-2"
+          style="font-size: 40px; border-radius: 20px"
+        >
+          pending_actions
+        </span>
+      </div>
+    </div>
+
+    <div
+      id="welcome_doc"
+      class="mt-5 mb-3 d-flex bg-primary w-100"
+      style="
+        height: 20%;
+        border-radius: 20px;
+        color: white;
+        justify-content: space-around;
+        align-items: center;
+        text-align: left;
+        line-height: 0.09rem;
+      "
+    >
+      <img width="35%" height="200%" src="../images/pngegg.png" alt="" />
+
+      <span>
+        <h2>Welcome <strong>{{docname}}</strong></h2>
+        <br />
+        <h5><strong>Have a great day at work!</strong></h5>
+      </span>
+    </div>
+    <div
+      class="w-100 h-100 mt-5 text-light d-flex flex-column"
+      style="border-radius: 30px; overflow: scroll; background-color: #2a1f47"
+    >
+      <h3 class="m-3">Scheduled Appointments</h3>
+      <div class="cards">
+        <div
+          class="container w-75 d-flex flex-row align-items-center"
+          style="
+            background-color: #3d3067;
+            justify-content: space-around;
+            margin-bottom: 0.3rem;
+          "
+          ng-repeat="sapt in scapts"
+        >
+          <img class="avatar" src="http://placeimg.com/80/80/people" />
+          <div class="text-light">
+            <span>{{sapt.patient_name}}</span>
+            <br />
+            <span style="color: #9b9daf">{{sapt.app_datetime}}</span>
+          </div>
+          <div class="btns">
+            <button
+              class="btn btn-primary my-1"
+              ng-click="reschbtn(sapt.app_id)"
+            >
+              Reschdule Appointment
+            </button>
+            <button
+              class="btn btn-success my-1"
+              ng-click="overlayfunc()"
+              ui-sref="checked({id: sapt.app_id })"
+            >
+              Checked
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="content"
+      class="d-flex flex-column w-100"
+      style="height: 15%"
+    ></div>
+  </div>
+  <div
+    class="h-100 w-25 d-flex flex-column align-items-center pt-4"
+    style="background-color: #2a1f47; overflow: scroll"
+  >
+    <input
+      type="text"
+      class="form-control w-75"
+      style="border-radius: 20px"
+      placeholder="Search"
+      ng-model="query"
+    />
+
+    <div id="plist" class="text-light d-flex flex-column mt-5">
+      <h5>Patients</h5>
+      <div
+        id="plitab"
+        class="container w-100 d-flex flex-row align-items-center"
+        ng-click="overlayfunc() ; pa_details(p.patient_id )"
+        ui-sref="plist({id : p.patient_id , phone : p.patient_phone , name : p.patient_name})"
+        style="
+          background-color: #3d3067;
+          justify-content: space-between;
+          margin-bottom: 0.3rem;
+          overflow: hidden;
+        "
+        ng-repeat="p in plist | filter:query"
+      >
+        <img class="avatar" src="http://placeimg.com/80/80/people" />
+        <div class="text-light">
+          <span>{{p.patient_name}}</span>
+          <br />
+          <span style="color: #9b9daf">{{p.datetime}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" id="prescription">
+  <div class="modal-dialog" style="width: 70%; height: 90%">
+    <div class="modal-content" style="width: 100%; height: 100%">
+      <div class="modal-header">
+        <h5 class="modal-title">Prescription</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="100%" id="prescpage"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="printpresc()">
+          Print
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

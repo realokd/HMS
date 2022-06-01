@@ -1,0 +1,47 @@
+<div
+  class="container w-75 d-flex px-4 h-75 text-light order border border-dark "
+  style="
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #2a1f47;
+  "
+>
+  <div ng-click="overlayfunc()" class="text-danger ml-auto m-2">ClOSE</div>
+  <h3 class="pb-4">Prescription</h3>
+  <div class="inp d-flex w-100" style="justify-content: space-between">
+    <input
+      type="text"
+      class="form-control w-75"
+      placeholder="Type Prescription"
+      ng-model="pres"
+    />
+    <button class="btn btn-success my-1" ng-click="addpres()">
+      Add prescription
+    </button>
+  </div>
+  <div
+    class="presclist text-light w-75 h-75 d-flex mt-3"
+    style="justify-content: flex-start; overflow: scroll"
+  >
+    <ul class="list-group text-light w-100">
+      <li
+        class="list-group-item text-light mb-1 w-100 d-flex"
+        style="
+          background-color: #3d3067;
+          justify-content: space-between;
+          align-items: center;
+        "
+        ng-repeat="p in presarr"
+      >
+        {{p}}
+        <span class="material-symbols-rounded ml-1" ng-click="del($index)">
+          delete
+        </span>
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-success my-3" ng-click="submitpres()">Submit</button>
+</div>

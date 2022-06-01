@@ -1,0 +1,206 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav justify-content-center mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" ui-sref="rdashb">Home</a>
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link active" ui-sref="rdoc">Doctors</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" >Action</a></li>
+            <li><a class="dropdown-item" >Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" >Something else here</a></li>
+          </ul>
+        <!-- </li>-->
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            active
+            ui-sref="rpat"
+            tabindex="-1"
+            aria-disabled="true"
+            >Patients</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+            ng-click="req()"
+          >
+            Appointment Requests
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a
+            class="nav-link active"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasBottom"
+            aria-controls="offcanvasBottom"
+          >
+            Scheduled Appointments
+          </a>
+        </li> -->
+        <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Reports
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" ui-sref="report">report 1</a></li>
+            <li><a class="dropdown-item" ui-sref="reportt">report 2</a></li>
+
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" ui-sref="rlogin" ng-click="logoutbtn()">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div style="width: 100vw; height: 92vh" ui-view>
+<center>
+  <div class="w-75 h-75" style="overflow-y: scroll; height: 500">
+    <input
+    class="form-control me-2 w-25 mt-2"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+    ng-model="hint"
+    mt-3
+  />
+  <!-- <select class="form-select" ng-model="hint" aria-label="Default select example">
+    <option selected disabled>Search By</option>
+    <option value="hint.patient_name">Patient Name</option>
+    <option value="hint.datetime">Date and time</option>
+    <option value="hint.doctor_name">Doctor Name</option>
+  </select> -->
+
+  <h2 class="mt-5">Scheduled Appointments</h2>
+  <table class="table table-hover" style="margin-top: 1rem;">
+    <thead>
+      <tr>
+        <th class="position-sticky bg-light" style="top: 0" scope="col">
+          Appointment ID
+        </th>
+        <th class="position-sticky bg-light" style="top: 0" scope="col">
+          Patient Name
+        </th>
+        <th class="position-sticky bg-light" style="top: 0" scope="col">
+          Doctor Name
+        </th>
+        <th class="position-sticky bg-light" style="top: 0" scope="col">
+          Appointment time
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        ng-repeat="doc in schapts | filter:hint"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        style="cursor: pointer"
+      >
+        <th scope="row">{{doc.app_id}}</th>
+        <td>{{doc.patient_name}}</td>
+        <td>{{doc.doctor_name}}</td>
+        <td>{{doc.datetime}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</center>
+
+</div>
+
+
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+>
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Pending Requests</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="card w-100" ng-repeat = "req in requests">
+      <div class="card-body">
+        <p class="card-text">
+          <h6 class="text-secondary">Patient Name</h6>
+          <h5>{{req.patient_name}}</h5> 
+          <h6 class="text-secondary">Appointment date</h6>
+          <h5>{{req.datetime}}</h5> 
+          <h6 class="text-secondary">For Doctor</h6>
+          <h5>{{req.doc_name}}</h5>
+        </p>
+        <a href="" class="btn btn-success" ng-click="status(req.app_id,true)" >Accept</a>
+        <a href="" class="btn btn-danger" ng-click="status(req.app_id, false)">Reject</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div
+  class="offcanvas offcanvas-bottom"
+  tabindex="-1"
+  id="offcanvasBottom"
+  aria-labelledby="offcanvasBottomLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body small">
+    <div class="card w-75" ng-repeat = "req in requests">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          <h6 class="text-secondary">Patient Name</h6>
+          <h3>req.patient_name</h3> <br>
+          <h6 class="text-secondary">Appointment date</h6>
+          <h3>{{req.datetime}}</h3> <br>
+          <h6 class="text-secondary">For Doctor</h6>
+          <h3>{{req.doc_name}}</h3>
+        </p>
+        <a href="#" class="btn btn-primary">Button</a>
+      </div>
+    </div>
+  </div>
+</div>

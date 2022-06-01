@@ -1,0 +1,85 @@
+<form class="w-50 h-50 mt-5 mx-auto border border-secondary p-3">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Start Date</label>
+    <input
+      type="date"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      ng-model="sdate"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">End Datee</label>
+    <input
+      type="date"
+      ng-model="edate"
+      class="form-control"
+      id="exampleInputPassword1"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >Which specialist would you want to visit?</label
+    >
+    <select
+      class="form-select w-100 p-1 border-1"
+      style="border-style: solid; background-color: #fff; height: 20%"
+      aria-label="Default select example"
+      ng-model="speciality"
+      ng-options="value as key for (value , key) in spec"
+    >
+      <option value="" selected disabled>Select Doctor's Speciality</option>
+    </select>
+  </div>
+  <button
+    type="submit"
+    ng-click="dwise()"
+    data-bs-toggle="modal"
+    data-bs-target="#vd"
+    class="btn btn-primary"
+  >
+    Submit
+  </button>
+</form>
+
+<div
+  class="modal fade"
+  id="vd"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Report</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="card" ng-repeat="a in app">
+            <div class="card-body">
+                <p class="card-text">
+                    <h6 class="text-secondary">Doctor's Name</h6>
+                      <h4>{{a.doc_name}}</h4>
+                     <h6 class="text-secondary">Doctor's Speciality</h6>
+                     <h4>{{a.patient_name}}</h4>
+                     <h6 class="text-secondary">Date</h6>
+                     <h4>{{a.datetime}}</h4>
+                    </p>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

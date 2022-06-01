@@ -1,0 +1,44 @@
+<div id="body" class="" style="width: 100vw; height: 100vh">
+  <nav class="nav-main">
+    <div class="btn-toggle-nav" ng-click="toggleNav()">
+      <div class="btn-x">X</div>
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li class="nav-item font-family: Poppins; dropdown mx-1">
+        <a
+          class="nav-link dropdown-toggle active"
+          id="navbarDropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Appointments
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" ui-sref="pdashb()">Scheduled</a>
+          <a class="dropdown-item" href="#">Requests</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="nav-sidebar">
+    <ul>
+      <li><span>Item list</span></li>
+      <li><a href="#">Item 1</a></li>
+      <li><a href="#">Item 2</a></li>
+      <li><a href="#">Item 3</a></li>
+      <li><a href="#">Item 4</a></li>
+    </ul>
+  </div>
+</div>
+<div class="" style="margin: 5rem">
+  <div class="row">
+    <div class="col-sm-12 border border-primary">hello</div>
+  </div>
+  <div class="row h-50">
+    <div class="col-sm-12 border border-primary">hello</div>
+  </div>
+</div>

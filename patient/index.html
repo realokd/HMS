@@ -13,7 +13,7 @@
       height="90%"
     />
   </div>
-  <div class="card w-50 min-h-75" ng-hide = hidef>
+  <div class="card w-50 min-h-75" st ng-hide = hidef>
     <div class="card-body d-flex justify-content-center align-items-center">
       <form
         class="d-flex justify-content-center align-items-center flex-column w-100"
@@ -25,12 +25,12 @@
         />
         <h1 class="mt-3 mb-3">Patient Login</h1>
         <div class="d-flex flex-column justify-content-center w-75">
-          <label for="aadhar">Aadhar Card</label>
+          <label for="aadhar">Enter Username</label>
           <input
             type="text"
             class="form-control"
             id="aadhar"
-            placeholder="Enter your registered Aadhar Number"
+            placeholder="Enter your Registered  Username"
             ng-model = "aadharnum"
           />
         </div>
@@ -116,15 +116,15 @@
           ></textarea>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M" ng-model = "gender">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Male" ng-model = "gender">
           <label class="form-check-label" for="inlineRadio1">Male</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="F" ng-model = "gender">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Female" ng-model = "gender">
           <label class="form-check-label" for="inlineRadio2">Female</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="O" ng-model = "gender">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Other" ng-model = "gender">
           <label class="form-check-label" for="inlineRadio2">Other</label>
         </div>
         <div class="form-group my-4">

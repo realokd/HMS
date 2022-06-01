@@ -1,0 +1,47 @@
+<div
+  class="container w-75 d-flex p-4 h-50 text-light order border border-dark"
+  style="
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: auto;
+    background-color: #2a1f47;
+  "
+>
+  <div
+    ng-click="overlayfunc()"
+    class="text-danger"
+    style="align-self: flex-end"
+  >
+    ClOSE
+  </div>
+  <h3>Appointments Pending For Approval</h3>
+  <div class="li w-100">
+    <div
+      class="container w-100 d-flex flex-row align-items-center"
+      style="
+        background-color: #3d3067;
+        justify-content: space-between;
+        margin-bottom: 0.1rem;
+      "
+      ng-repeat="p in pendingapts"
+    >
+      <img class="avatar" src="http://placeimg.com/80/80/people" />
+      <div class="text-light">
+        <span>{{p.patient_name}}</span>
+        <br />
+        <span style="color: #9b9daf">{{p.datetime}}</span>
+      </div>
+      <div class="btns">
+        <button class="btn btn-danger my-1" ng-click="approve(p.app_id,false)"">
+          Reject
+        </button>
+        <button class="btn btn-success my-1" ng-click="approve(p.app_id , true)"">
+          Approve
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

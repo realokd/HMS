@@ -28,6 +28,8 @@ style="
       class="form-control"
       id="exampleInputEmail1"
       aria-describedby="emailHelp"
+      disabled
+      value= {{d.fname}}
     />
   </div>
   <div class="mb-3">
@@ -38,6 +40,8 @@ style="
       type="number"
       class="form-control"
       id="exampleInputPassword1"
+      disabled
+      value= {{d.phone}}
     />
   </div>
   <div class="mb-3">
@@ -49,7 +53,8 @@ style="
       style="border-style: solid; background-color: #fff; height: 20%"
       aria-label="Default select example"
       ng-model="speciality"
-      ng-options="key as value for (key , value) in spec"
+      ng-options="value as key for (value , key) in spec"
+      ng-change='dynamicdd(speciality)'
     >
       <option value="" selected disabled>
         Select Doctor's Speciality
@@ -64,13 +69,26 @@ style="
       class="form-select w-100 p-1 border-1"
       style="border-style: solid; background-color: #fff"
       aria-label="Default select example"
-      ng-model="speciality"
-      ng-options="key as value for (key , value) in spec"
+      ng-model="doctorname"
+      ng-options="value as key.name for (value, key) in doctorsli"
+      
     >
       <option value="" selected disabled>Select the Doctor</option>
     </select>
   </div>
   <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label"
+      >Please Select Appointment time</label
+    >
+    <input
+      type="datetime-local"
+      class="form-control"
+      id="exampleInputPassword1"
+      ng-model = "datetime"
+    />
+  </div>
+  
+  <!-- <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label"
       >Which specialist would you want to visit?</label
     >
@@ -80,10 +98,11 @@ style="
       aria-label="Default select example"
       ng-model="speciality"
       ng-options="key as value for (key , value) in spec"
+      ng-change='dynamicdd()'
     >
       <option value="" selected disabled>Available Time Slots</option>
     </select>
-  </div>
+  </div> -->
   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
 </form>
 <div
@@ -111,29 +130,24 @@ style="
 
   <tbody>
     <tr>
-      <th scope="row">1</th>
       <td>Patient's Name</td>
-      <td>Om</td>
+      <td>{{d.fname}}</td>
     </tr>
     <tr>
-      <th scope="row">2</th>
       <td>Patient's Email</td>
-      <td>Om@gmail.com</td>
+      <td>{{d.email}}</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
       <td scope="row"">Visiting to Doctor</td>
-      <td>Kamal Nath</td>
+      <td>{{doctorsli[doctorname].name}}</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
       <td scope="row"">Appintment Time</td>
-      <td>12:30 pm</td>
+      <td>{{aptTime}}</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
       <td scope="row"">Fees</td>
-      <td>1000</td>
+      <td>{{doctorsli[doctorname].fees}}</td>
     </tr>
   </tbody>
 </table>
